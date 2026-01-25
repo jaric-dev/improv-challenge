@@ -88,3 +88,23 @@ h2 {
   margin: 0 auto;
   line-height: 1.4;
 }
+#references-toggle {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  cursor: pointer;
+}
+
+#references {
+  display: none;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+#references ul {
+  list-style: none;
+  padding: 0;
+}
