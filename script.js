@@ -18,19 +18,16 @@ function update() {
 
 document.getElementById("refresh").addEventListener("click", update);
 
-// --- Mise à jour du sélecteur de langue ---
+// --- Sélecteur de langue sans changement de défi ---
 document.querySelectorAll("#lang-select button").forEach(btn => {
   btn.addEventListener("click", () => {
     currentLang = btn.dataset.lang;
 
-    // Retire la classe active de tous les boutons
     document.querySelectorAll("#lang-select button")
       .forEach(b => b.classList.remove("active"));
-
-    // Ajoute la classe active au bouton cliqué
     btn.classList.add("active");
 
-    update();
+    // Pas de update() ici
   });
 });
 
