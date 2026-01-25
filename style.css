@@ -135,3 +135,15 @@ h2 {
     transform: translateY(0);
   }
 }
+#challenge p {
+  margin: 0.5rem 0;
+}
+
+#challenge strong {
+  font-size: 1.3rem;
+}
+
+#challenge em {
+  color: #555;
+  font-style: italic;
+}
