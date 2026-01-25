@@ -82,3 +82,9 @@ h2 {
 #lang-select button:hover {
   background: #e5e5e5;
 }
+#challenge {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
