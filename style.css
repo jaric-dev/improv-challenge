@@ -103,26 +103,39 @@ button:hover {
   font-weight: 600;
   margin-right: 0.3rem;
 }
+/* Bouton Sources & inspirations */
+.ref-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  color: #555;
+  font-size: 1.1rem;
+  margin: 1rem auto;
+  transition: color 0.2s;
+}
 
-/* ------------------------------
-   RÉFÉRENCES
------------------------------- */
+.ref-toggle:hover {
+  color: #000;
+}
 
+/* Petite flèche qui pivote */
+.ref-arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.ref-toggle.open .ref-arrow {
+  transform: rotate(180deg);
+}
+
+/* Contenu caché */
 #references {
   display: none;
-  margin-top: 2rem;
+  margin-top: 1rem;
   font-size: 0.95rem;
   color: #444;
 }
 
-#references-toggle {
-  margin-top: 2rem;
-  background: #888;
-}
 
-#references-toggle:hover {
-  background: #666;
-}
-<div id="references-toggle" class="icon-button">
-  ℹ️ <span>Sources & inspirations</span>
-</div>
+
