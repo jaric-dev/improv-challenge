@@ -13,8 +13,21 @@ function randomChallenge() {
 }
 
 function update() {
-  document.getElementById("challenge").textContent = randomChallenge();
+  const challengeEl = document.getElementById("challenge");
+
+  // Retire l’animation si elle est déjà là
+  challengeEl.classList.remove("fade-in");
+
+  // Force le navigateur à recalculer (permet de rejouer l’animation)
+  void challengeEl.offsetWidth;
+
+  // Ajoute l’animation
+  challengeEl.classList.add("fade-in");
+
+  // Met à jour le texte
+  challengeEl.textContent = randomChallenge();
 }
+
 
 document.getElementById("refresh").addEventListener("click", update);
 
