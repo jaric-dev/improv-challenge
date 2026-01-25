@@ -123,3 +123,6 @@ button:hover {
 #references-toggle:hover {
   background: #666;
 }
+<div id="references-toggle" class="icon-button">
+  ℹ️ <span>Sources & inspirations</span>
+</div>
