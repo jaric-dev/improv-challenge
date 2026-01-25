@@ -1,5 +1,6 @@
 let currentLang = "fr";
 let challenges = [];
+let lastChallenge = null; // Empêche d'afficher deux fois le même défi
 
 // Charger depuis Google Sheets via opensheet
 async function loadChallenges() {
@@ -8,10 +9,17 @@ async function loadChallenges() {
   update();
 }
 
-// Retourne un défi aléatoire selon la langue
+// Retourne un défi aléatoire selon la langue, sans répétition immédiate
 function randomChallenge() {
   const filtered = challenges.filter(c => c.lang === currentLang);
-  const item = filtered[Math.floor(Math.random() * filtered.length)];
+  let item;
+
+  // Tire un défi différent du précédent (si possible)
+  do {
+    item = filtered[Math.floor(Math.random() * filtered.length)];
+  } while (filtered.length > 1 && item === lastChallenge);
+
+  lastChallenge = item;
 
   return `
     <strong>${item.type}</strong><br>
@@ -24,14 +32,10 @@ function randomChallenge() {
 function update() {
   const challengeEl = document.getElementById("challenge");
 
-  // Met à jour le contenu HTML (mise en page riche)
   challengeEl.innerHTML = randomChallenge();
 
-  // Réinitialise l’animation
   challengeEl.classList.remove("fade-in");
   void challengeEl.offsetWidth;
-
-  // Relance l’animation
   challengeEl.classList.add("fade-in");
 }
 
@@ -46,7 +50,6 @@ document.querySelectorAll("#lang-select button").forEach(btn => {
     document.querySelectorAll("#lang-select button")
       .forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-
   });
 });
 
