@@ -35,3 +35,16 @@ h2 {
   margin-bottom: 2rem;
   color: #555;
 }
+#lang-select {
+  margin-bottom: 1.5rem;
+}
+
+#lang-select button {
+  margin: 0 0.3rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
