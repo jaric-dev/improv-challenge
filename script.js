@@ -18,18 +18,29 @@ function update() {
 
 document.getElementById("refresh").addEventListener("click", update);
 
-// --- Sélecteur de langue sans changement de défi ---
+// --- Sélecteur de langue ---
 document.querySelectorAll("#lang-select button").forEach(btn => {
   btn.addEventListener("click", () => {
     currentLang = btn.dataset.lang;
 
-    // Mise à jour visuelle du bouton actif
     document.querySelectorAll("#lang-select button")
       .forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
-
-    // On ne change PAS le défi ici
   });
 });
 
+
+// --- Ajout du script pour afficher/masquer les références ---
+const refToggle = document.getElementById("references-toggle");
+const refSection = document.getElementById("references");
+
+if (refToggle && refSection) {
+  refToggle.addEventListener("click", () => {
+    refSection.style.display =
+      refSection.style.display === "block" ? "none" : "block";
+  });
+}
+
+
+// --- Ne pas toucher à cette ligne ---
 loadChallenges();
