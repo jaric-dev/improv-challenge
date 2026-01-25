@@ -3,7 +3,7 @@ let challenges = [];
 
 // Charger depuis Google Sheets via opensheet
 async function loadChallenges() {
-  const response = await fetch("https://opensheet.elk.sh/1O5s4jXXwkGsxuRX8Tq1D1t3Iu6_wH9R208M6P02UBCk/Feuille1");
+  const response = await fetch("https://opensheet.elk.sh/1O5s4jXXwkGsxuRX8Tq1D1t3Iu6_wH9R208M6P02UBCk/banque_defis");
   challenges = await response.json();
   update();
 }
