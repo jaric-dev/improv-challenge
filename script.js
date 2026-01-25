@@ -23,11 +23,12 @@ document.querySelectorAll("#lang-select button").forEach(btn => {
   btn.addEventListener("click", () => {
     currentLang = btn.dataset.lang;
 
+    // Mise à jour visuelle du bouton actif
     document.querySelectorAll("#lang-select button")
       .forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
 
-    // Pas de update() ici
+    // On ne change PAS le défi ici
   });
 });
 
