@@ -47,4 +47,30 @@ h2 {
   cursor: pointer;
   border-radius: 6px;
 }
+#lang-select {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-label {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+#lang-select button {
+  padding: 0.4rem 0.8rem;
+  border: 1px solid #ccc;
+  background: #f7f7f7;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+#lang-select button.active {
+  background: #333;
+  color: white;
+  border-color: #333;
+}
 
