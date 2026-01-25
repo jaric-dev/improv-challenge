@@ -23,3 +23,15 @@ button {
   color: white;
   cursor: pointer;
 }
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+  color: #555;
+}
