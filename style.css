@@ -1,52 +1,3 @@
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: system-ui, sans-serif;
-  background: #fafafa;
-}
-
-main {
-  text-align: center;
-  max-width: 600px;
-  padding: 1rem;
-}
-
-button {
-  margin-top: 1rem;
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 999px;
-  background: black;
-  color: white;
-  cursor: pointer;
-}
-h1 {
-  font-size: 2.4rem;
-  margin-bottom: 0.3rem;
-  font-weight: 700;
-}
-
-h2 {
-  font-size: 1.2rem;
-  font-weight: 400;
-  margin-bottom: 2rem;
-  color: #555;
-}
-#lang-select {
-  margin-bottom: 1.5rem;
-}
-
-#lang-select button {
-  margin: 0 0.3rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-  border-radius: 6px;
-}
 #lang-select {
   margin-bottom: 1.5rem;
   display: flex;
@@ -60,19 +11,19 @@ h2 {
 }
 
 #lang-select button {
+  margin: 0 0.3rem;
   padding: 0.4rem 0.8rem;
   border: 1px solid #ccc;
   background: #f7f7f7;
   cursor: pointer;
   border-radius: 6px;
   font-weight: 600;
-  opacity: 1; /* Toujours visible */
+  color: #333; /* 
 }
 
 #lang-select button.active {
   background: #333;
   color: white;
   border-color: #333;
-}
 }
 
