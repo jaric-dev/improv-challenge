@@ -66,11 +66,13 @@ h2 {
   cursor: pointer;
   border-radius: 6px;
   font-weight: 600;
+  opacity: 1; /* Toujours visible */
 }
 
 #lang-select button.active {
   background: #333;
   color: white;
   border-color: #333;
+}
 }
 
