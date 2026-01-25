@@ -1,25 +1,31 @@
 let currentLang = "fr";
 let challenges = [];
-let lastChallenge = null; // Empêche d'afficher deux fois le même défi
+let lastDescription = null; // On mémorise seulement le texte du défi
 
-// Charger depuis Google Sheets via opensheet
 async function loadChallenges() {
   const response = await fetch("https://opensheet.elk.sh/1O5s4jXXwkGsxuRX8Tq1D1t3Iu6_wH9R208M6P02UBCk/banque_defis");
   challenges = await response.json();
   update();
 }
 
-// Retourne un défi aléatoire selon la langue, sans répétition immédiate
 function randomChallenge() {
   const filtered = challenges.filter(c => c.lang === currentLang);
-  let item;
+  if (filtered.length === 0) {
+    return "<em>Aucun défi pour cette langue.</em>";
+  }
 
-  // Tire un défi différent du précédent (si possible)
+  let item;
+  let safety = 0;
+
+  // On évite de reprendre la même description, si possible
   do {
     item = filtered[Math.floor(Math.random() * filtered.length)];
-  } while (filtered.length > 1 && item === lastChallenge);
+    safety++;
+  } while (filtered.length > 1 &&
+           item.description === lastDescription &&
+           safety < 10);
 
-  lastChallenge = item;
+  lastDescription = item.description;
 
   return `
     <strong>${item.type}</strong><br>
@@ -28,21 +34,16 @@ function randomChallenge() {
   `;
 }
 
-// Met à jour le texte du défi + animation fade-in
 function update() {
   const challengeEl = document.getElementById("challenge");
-
   challengeEl.innerHTML = randomChallenge();
-
   challengeEl.classList.remove("fade-in");
   void challengeEl.offsetWidth;
   challengeEl.classList.add("fade-in");
 }
 
-// Bouton "Nouveau défi"
 document.getElementById("refresh").addEventListener("click", update);
 
-// Sélecteur de langue
 document.querySelectorAll("#lang-select button").forEach(btn => {
   btn.addEventListener("click", () => {
     currentLang = btn.dataset.lang;
@@ -53,7 +54,6 @@ document.querySelectorAll("#lang-select button").forEach(btn => {
   });
 });
 
-// Références : afficher / masquer
 const refToggle = document.getElementById("references-toggle");
 const refSection = document.getElementById("references");
 
@@ -64,5 +64,4 @@ if (refToggle && refSection) {
   });
 }
 
-// Lancer l’application
 loadChallenges();
