@@ -77,10 +77,16 @@ const refSection = document.getElementById("references");
 
 if (refToggle && refSection) {
   refToggle.addEventListener("click", () => {
-    refSection.style.display =
-      refSection.style.display === "block" ? "none" : "block";
+    const isOpen = refSection.style.display === "block";
+
+    // Ouvre ou ferme la section
+    refSection.style.display = isOpen ? "none" : "block";
+
+    // Ajoute/enlève la classe pour faire pivoter la flèche
+    refToggle.classList.toggle("open", !isOpen);
   });
 }
+
 
 // Lancer l’application
 loadChallenges();
