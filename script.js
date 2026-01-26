@@ -86,6 +86,19 @@ if (refToggle && refSection) {
     refToggle.classList.toggle("open", !isOpen);
   });
 }
+// Contact : afficher / masquer avec flèche pivotante
+const contactToggle = document.getElementById("contact-toggle");
+const contactSection = document.getElementById("contact-section");
+
+if (contactToggle && contactSection) {
+  contactToggle.addEventListener("click", () => {
+    const isOpen = contactSection.style.display === "block";
+
+    contactSection.style.display = isOpen ? "none" : "block";
+
+    contactToggle.classList.toggle("open", !isOpen);
+  });
+}
 
 
 // Lancer l’application
