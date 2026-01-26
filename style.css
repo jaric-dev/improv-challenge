@@ -136,6 +136,42 @@ button:hover {
   font-size: 0.95rem;
   color: #444;
 }
+/* Section contact cachée par défaut */
+#contact-section {
+  display: none;
+  margin-top: 1rem;
+}
+
+/* Formulaire */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.contact-form textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  padding: 0.6rem 1.2rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #555;
+}
 
 
 
