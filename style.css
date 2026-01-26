@@ -172,6 +172,23 @@ button:hover {
 .contact-form button:hover {
   background: #555;
 }
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+  resize: vertical;
+}
+
+.contact-form label {
+  font-size: 0.95rem;
+  color: #444;
+}
 
 
 
