@@ -80,16 +80,24 @@ if (!Array.isArray(references) || references.length === 0) {
     const item = document.createElement("div");
     item.className = "reference-item";
 
-    item.innerHTML = `
-      <h3>${ref.titre || "Sans titre"}</h3>
-      <p><strong>Type :</strong> ${ref.type || "—"}</p>
-      ${ref.auteur ? `<p><strong>Auteur :</strong> ${ref.auteur}</p>` : ""}
-      ${ref.lien && ref.lien.startsWith("http")
-  ? `<p><a href="${ref.lien}" target="_blank">Lien</a></p>`
-  : ""}
+   item.innerHTML = `
+  <h3>${ref.Name || "Sans nom"}</h3>
 
-      ${ref.notes ? `<p>${ref.notes}</p>` : ""}
-    `;
+  ${ref.Website && ref.Website.startsWith("http")
+    ? `<p><a href="${ref.Website}" target="_blank">Site web</a></p>`
+    : ""}
+
+  ${ref.Book ? `<p><strong>Livres publiés :</strong> ${ref.Book}</p>` : ""}
+`;
+
+    #references-list ul {
+  margin: 0.3rem 0 0.8rem 1rem;
+  padding: 0;
+}
+
+#references-list li {
+  margin: 0.2rem 0;
+}
 
     container.appendChild(item);
   });
