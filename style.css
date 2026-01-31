@@ -42,8 +42,6 @@ h2 {
   margin-bottom: 6rem;
 }
 
-
-
 /* ------------------------------
    TITRE PRINCIPAL
 ------------------------------ */
@@ -204,6 +202,11 @@ button:hover {
 
 #references-list li {
   margin: 0.2rem 0;
+}
+
+#references,
+#references * {
+  text-align: left;
 }
 
 /* ------------------------------
