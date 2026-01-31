@@ -90,25 +90,25 @@ function renderReferences(references) {
       ? ref.Book.split(",").map(b => b.trim()).filter(b => b.length > 0)
       : [];
 
-    item.innerHTML = `
-      <h3>${ref.Name || "Sans nom"}</h3>
+  item.innerHTML = `
+  <h3><strong>${ref.Name || "Sans nom"}</strong></h3>
 
-      ${websites.length > 0 ? `
-        <p><strong>Site${websites.length > 1 ? "s" : ""} :</strong></p>
-        <ul>
-          ${websites.map(w => `<li><a href="${w}" target="_blank">${w}</a></li>`).join("")}
-        </ul>
-      ` : ""}
+  ${websites.length > 0 ? `
+    <p>Site${websites.length > 1 ? "s" : ""} :</p>
+    <ul>
+      ${websites.map(w => `<li><a href="${w}" target="_blank">${w}</a></li>`).join("")}
+    </ul>
+  ` : ""}
 
-      ${books.length > 0 ? `
-        <p><strong>Livre${books.length > 1 ? "s" : ""} publiés :</strong></p>
-        <ul>
-          ${books.map(b => `<li>${b}</li>`).join("")}
-        </ul>
-      ` : ""}
+  ${books.length > 0 ? `
+    <p>Book${books.length > 1 ? "s" : ""} :</p>
+    <ul>
+      ${books.map(b => `<li>${b}</li>`).join("")}
+    </ul>
+  ` : ""}
 
-      ${ref.Quote ? `<p><em>"${ref.Quote}"</em></p>` : ""}
-    `;
+  ${ref.Quote ? `<p><em>"${ref.Quote}"</em></p>` : ""}
+`;
 
     container.appendChild(item);
   });
