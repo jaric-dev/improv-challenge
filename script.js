@@ -70,38 +70,50 @@ function renderReferences(references) {
   if (!container) return;
 
   container.innerHTML = "";
-// Si aucune référence n'est disponible
-if (!Array.isArray(references) || references.length === 0) {
-  container.innerHTML = "<p>Aucune référence disponible.</p>";
-  return;
-}
+
+  if (!Array.isArray(references) || references.length === 0) {
+    container.innerHTML = "<p>Aucune référence disponible.</p>";
+    return;
+  }
 
   references.forEach(ref => {
     const item = document.createElement("div");
     item.className = "reference-item";
 
-   item.innerHTML = `
-  <h3>${ref.Name || "Sans nom"}</h3>
+    // Découper les sites web (séparés par virgules)
+    const websites = ref.Website
+      ? ref.Website.split(",").map(w => w.trim()).filter(w => w.startsWith("http"))
+      : [];
 
-  ${ref.Website && ref.Website.startsWith("http")
-    ? `<p><a href="${ref.Website}" target="_blank">Site web</a></p>`
-    : ""}
+    // Découper les livres (séparés par virgules)
+    const books = ref.Book
+      ? ref.Book.split(",").map(b => b.trim()).filter(b => b.length > 0)
+      : [];
 
-  ${ref.Book ? `<p><strong>Livres publiés :</strong> ${ref.Book}</p>` : ""}
-`;
+    item.innerHTML = `
+      <h3>${ref.Name || "Sans nom"}</h3>
 
-    #references-list ul {
-  margin: 0.3rem 0 0.8rem 1rem;
-  padding: 0;
-}
+      ${websites.length > 0 ? `
+        <p><strong>Site${websites.length > 1 ? "s" : ""} :</strong></p>
+        <ul>
+          ${websites.map(w => `<li><a href="${w}" target="_blank">${w}</a></li>`).join("")}
+        </ul>
+      ` : ""}
 
-#references-list li {
-  margin: 0.2rem 0;
-}
+      ${books.length > 0 ? `
+        <p><strong>Livre${books.length > 1 ? "s" : ""} publiés :</strong></p>
+        <ul>
+          ${books.map(b => `<li>${b}</li>`).join("")}
+        </ul>
+      ` : ""}
+
+      ${ref.Quote ? `<p><em>"${ref.Quote}"</em></p>` : ""}
+    `;
 
     container.appendChild(item);
   });
 }
+
 
 // Bouton "Nouveau défi"
 document.getElementById("refresh").addEventListener("click", update);
