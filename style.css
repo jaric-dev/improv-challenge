@@ -13,8 +13,8 @@ body {
 
 /* Conteneur principal */
 #container {
-  max-width: 600px; /
-  margin: 4rem auto; /
+  max-width: 600px;
+  margin: 4rem auto;
   padding: 0 1.5rem;
   text-align: center;
 }
