@@ -7,6 +7,7 @@ Le site tire automatiquement des défis depuis une feuille Google Sheets, ce qui
 
 👉 **Site en ligne :** https://jaric-dev.github.io/improv-challenge  
 👉 **Source des défis :** Google Sheets + OpenSheet
+👉 **Source des références** : Google Sheets + OpenSheet
 
 ## 🎯 Fonctionnalités
 
@@ -24,6 +25,10 @@ Chaque défi contient :
 - Animation *fade‑in* à chaque nouveau défi
 - Sélecteur de langue avec état actif
 - Section « Références » dépliable sous le bouton principal
+- Références enrichies :
+plusieurs sites web
+plusieurs livres
+citation optionnelle
 - Déploiement automatique via GitHub Pages
 
 ---
@@ -46,9 +51,18 @@ Le sélecteur FR/EN en bas de page permet de basculer instantanément.
 Le bouton actif est visuellement mis en évidence.
 
 ### 3. Voir les références
-Sous le bouton « Nouveau défi », un lien **Références** permet d’afficher ou masquer une courte liste de sources d’inspiration.
+Sous le bouton « Nouveau défi », un toggle Sources & inspirations permet d’afficher ou masquer la liste des références.
 
-#### 4. Modifier ou ajouter des défis
+Chaque référence peut contenir :
+un nom 
+un ou plusieurs sites web
+un ou plusieurs livres
+une citation optionnelle.
+
+### 4. Voir la section Contact
+Un toggle Contact me permet d’afficher un formulaire simple (UseBasin).
+
+### 5. Modifier ou ajouter des défis
 
 Les défis sont gérés dans une feuille Google Sheets publique.
 
@@ -64,7 +78,28 @@ Format attendu :
 | lang | type | description | trucs |
 |------|------|-------------|--------|
 | fr   | Personnage | Choisi un Objet… | Inspire toi de.. Attention à... |
-| en   | Body| Play a duel between… | Try multiple type of weapons, period... |
+| en   | Character | Pick an Object… | Draw inspiration from, Be careful with... |
+| fr   | Corps | Interpète un duel entre … | Essai différents type d'armes, époques, genres |
+| en   | Body| Play a duel between… | Try multiple type of weapons, period, genres... |
+
+Mettre les versions traduites directement une sous l'autre, pour s'assurer d'avoir tout les défis dans toute les langues disponibles. 
+
+### 6. Modifier ou ajouter des Références
+Les références proviennent de l’onglet banque_references de la même feuille.
+
+Format attendu :
+| Nom           | Website          | Book                            | Quote                           |
+|---------------|------------------|---------------------------------|---------------------------------|
+| Robert Gravel | robertgravel.com |Impro I : réflexions et analyses | Tout ce que l'on fait parle de liberté au fond. |
+
+Website : plusieurs sites séparés par des virgules
+Book : plusieurs livres séparés par des virgules
+Quote : optionnelle
+
+Le script gère automatiquement :
+
+la découpe des listes
+l’affichage conditionnel
 
 ---
 
@@ -74,15 +109,17 @@ Le fichier `style.css` contrôle :
 - la carte du défi  
 - la taille de la description  
 - l’espacement entre les sections  
-- les couleurs et la typographie  
-- l’animation fade-in  
+- le centrage via #container
+- les toggles Références / Contact
+- l’animation fade-in
 
 Le fichier `script.js` contrôle :
-- le chargement des données  
-- la sélection aléatoire  
-- la logique anti-répétition  
-- l’affichage dynamique  
-
+- le chargement des données (défis + références)
+- la sélection aléatoire
+- la logique anti-répétition
+- l’affichage dynamique
+- la gestion multi-sites / multi-livres / quotes
+- 
 ---
 
 ## ✨ Animation du défi
@@ -91,48 +128,6 @@ Le texte du défi bénéficie d’une animation *fade‑in* subtile à chaque mi
 Elle est déclenchée via une classe CSS (`.fade-in`) appliquée dynamiquement dans `script.js`.
 
 ---
-
-## 📚 Références & inspirations
-
-Les exercices et l’approche pédagogique sont inspirés par :
-
-- Katy Schutte – https://www.katyschutte.co.uk/
-- Jill Bernard – https://payhip.com/JillBernardImprov
-- Site web : https://www.can-i-get-a.com/
-
----
-
-## 🛠 Développement
-
-### Installation locale
-Aucune dépendance.  
-Il suffit d’ouvrir `index.html` dans un navigateur.
-
-### Modifier les défis
-Les listes se trouvent dans :
-
-challenges.json
-
-Format :
-
-```json
-{
-  "fr": ["Défi 1", "Défi 2"],
-  "en": ["Challenge 1", "Challenge 2"]
-}
-
-Animation
-Définie dans style.css :
-
-.fade-in {
-  animation: fadeIn 0.4s ease;
-}
-
-Déclenchée dans script.js :
-
-challengeEl.classList.remove("fade-in");
-void challengeEl.offsetWidth;
-challengeEl.classList.add("fade-in");
 
 🌐 Déploiement
 Le site est automatiquement publié via GitHub Pages.
