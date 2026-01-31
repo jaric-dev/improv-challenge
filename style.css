@@ -172,6 +172,15 @@ button:hover {
   text-decoration: underline;
 }
 
+#references-list ul {
+  margin: 0.3rem 0 0.8rem 1rem;
+  padding: 0;
+}
+
+#references-list li {
+  margin: 0.2rem 0;
+}
+
 /* ------------------------------
    SECTION CONTACT
 ------------------------------ */
