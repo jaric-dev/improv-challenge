@@ -9,6 +9,13 @@ async function loadChallenges() {
   update();
 }
 
+// Charger les références depuis Google Sheets via opensheet
+async function loadReferences() {
+  const response = await fetch("https://opensheet.elk.sh/1O5s4jXXwkGsxuRX8Tq1D1t3Iu6_wH9R208M6P02UBCk/banque_references");
+  const references = await response.json();
+  renderReferences(references);
+}
+
 // Retourne un défi aléatoire selon la langue, sans répétition immédiate
 function randomChallenge() {
   const filtered = challenges.filter(c => c.lang === currentLang);
@@ -57,6 +64,37 @@ function update() {
   challengeEl.classList.add("fade-in");
 }
 
+// Affiche la liste des références dans la section dédiée
+function renderReferences(references) {
+  const container = document.getElementById("references-list");
+  if (!container) return;
+
+  container.innerHTML = "";
+// Si aucune référence n'est disponible
+if (!Array.isArray(references) || references.length === 0) {
+  container.innerHTML = "<p>Aucune référence disponible.</p>";
+  return;
+}
+
+  references.forEach(ref => {
+    const item = document.createElement("div");
+    item.className = "reference-item";
+
+    item.innerHTML = `
+      <h3>${ref.titre || "Sans titre"}</h3>
+      <p><strong>Type :</strong> ${ref.type || "—"}</p>
+      ${ref.auteur ? `<p><strong>Auteur :</strong> ${ref.auteur}</p>` : ""}
+      ${ref.lien && ref.lien.startsWith("http")
+  ? `<p><a href="${ref.lien}" target="_blank">Lien</a></p>`
+  : ""}
+
+      ${ref.notes ? `<p>${ref.notes}</p>` : ""}
+    `;
+
+    container.appendChild(item);
+  });
+}
+
 // Bouton "Nouveau défi"
 document.getElementById("refresh").addEventListener("click", update);
 
@@ -103,3 +141,5 @@ if (contactToggle && contactSection) {
 
 // Lancer l’application
 loadChallenges();
+loadReferences();
+
