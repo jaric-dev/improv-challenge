@@ -34,23 +34,29 @@ function randomChallenge() {
            item.description === lastDescription &&
            safety < 10);
 
-  lastDescription = item.description;
+ lastDescription = item.description;
 
-  const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
+const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
 
-  return `
-    <div class="challenge-type">
-      <span class="label">Type:</span> ${item.type}
-    </div>
+// Convertir les retours à la ligne en <br>
+const trucsFormatted = item.trucs
+  ? item.trucs.replace(/\n/g, "<br>")
+  : "";
 
-    <div class="challenge-description">
-      ${item.description}
-    </div>
+return `
+  <div class="challenge-type">
+    <span class="label">Type:</span> ${item.type}
+  </div>
 
-    <div class="challenge-tips">
-      <span class="label">${tipsLabel}</span> ${item.trucs}
-    </div>
-  `;
+  <div class="challenge-description">
+    ${item.description}
+  </div>
+
+  <div class="challenge-tips">
+    <span class="label">${tipsLabel}</span> ${trucsFormatted}
+  </div>
+`;
+
 }
 
 // Met à jour le texte du défi + animation fade-in
