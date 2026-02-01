@@ -41,16 +41,21 @@ const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
 const trucsFormatted = (() => {
   if (!item.trucs) return "";
 
+  function linkify(text) {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.replace(urlRegex, url => `<a href="${url}" target="_blank">${url}</a>`);
+  }
+
   const lines = item.trucs
     .split(/\n/)
     .map(l => l.trim())
-    .filter(l => l.length > 0);   // élimine TOUTES les lignes vides
+    .filter(l => l.length > 0);
 
   if (lines.length <= 1) {
-    return lines[0] || "";
+    return linkify(lines[0] || "");
   }
 
-  return lines.map(line => `• ${line}`).join("<br>");
+  return lines.map(line => `• ${linkify(line)}`).join("<br>");
 })();
 
 return `
