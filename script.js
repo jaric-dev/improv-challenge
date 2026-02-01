@@ -38,15 +38,20 @@ function randomChallenge() {
 
 const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
 
-// Convertir les retours à la ligne en <br>
-const trucsFormatted = item.trucs
-  ? item.trucs
-      .split(/\\n/g)                     
-      .map(line => line.trim())
-      .filter(line => line !== "")
-      .map(line => `• ${line}`)
-      .join("<br>")
-  : "";
+const trucsFormatted = (() => {
+  if (!item.trucs) return "";
+
+  // Découper selon les retours à la ligne
+  const lines = item.trucs.split(/\n/).map(l => l.trim()).filter(l => l !== "");
+
+  // S'il n'y a qu'une seule ligne → pas de puce
+  if (lines.length <= 1) {
+    return lines[0] || "";
+  }
+
+  // Sinon → liste avec puces
+  return lines.map(line => `• ${line}`).join("<br>");
+})();
 
 return `
   <div class="challenge-type">
