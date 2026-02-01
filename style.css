@@ -230,7 +230,10 @@ button:hover {
 #mindset-section li {
   margin: 0.3rem 0;
 }
-
+#mindset-section p {
+  font-weight: 700;
+  margin-top: 1rem;
+}
 /* ------------------------------
    SECTION CONTACT
 ------------------------------ */
