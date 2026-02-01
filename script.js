@@ -41,10 +41,11 @@ const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
 // Convertir les retours à la ligne en <br>
 const trucsFormatted = item.trucs
   ? item.trucs
-      .split(/(\r\n|\r|\n)/g)        // coupe selon tous les types de retours à la ligne
-      .filter(line => line.trim() !== "") // enlève les lignes vides
-      .map(line => `• ${line.trim()}`)    // ajoute une puce
-      .join("<br>")                       // remet ensemble avec <br>
+      .split(/\\n/g)                     
+      .map(line => line.trim())
+      .filter(line => line !== "")
+      .map(line => `• ${line}`)
+      .join("<br>")
   : "";
 
 return `
