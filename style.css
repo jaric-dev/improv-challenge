@@ -117,7 +117,8 @@ button:hover {
 .tips-content {
   display: block;
   margin-top: 0.4rem;
-  padding-right: 0.5rem; /* léger retrait visuel */
+  padding-right: 0.5rem; 
+   text-align: left; 
 }
 .tips-content a {
   color: #0077cc;
@@ -233,6 +234,11 @@ button:hover {
 #mindset-section p {
   font-weight: 700;
   margin-top: 1rem;
+}
+.mindset-title {
+  font-weight: 700;
+  margin-top: 1rem;
+  color: #222;
 }
 /* ------------------------------
    SECTION CONTACT
