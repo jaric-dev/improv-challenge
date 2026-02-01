@@ -102,23 +102,24 @@ button:hover {
 }
 
 .challenge-tips {
+  text-align: right;
   margin-top: 1rem;
   font-size: 1.15rem;
   line-height: 1.45;
 }
 
 .challenge-tips .label {
-  font-weight: 600;
-  margin-right: 0.3rem;
-  color: #444;
+  display: block;       /* force "Trucs:" sur sa propre ligne */
+  text-align: left;     /* le label reste aligné à gauche */
+  margin-bottom: 0.3rem;
 }
 
 .tips-content {
   display: block;
   margin-top: 0.4rem;
-  margin-left: 0.8rem;
-  font-style: italic;
+  padding-right: 0.5rem; /* léger retrait visuel */
 }
+
 
 /* ------------------------------
    TOGGLES (Références + Contact)
