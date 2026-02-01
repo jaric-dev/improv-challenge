@@ -41,15 +41,15 @@ const tipsLabel = currentLang === "fr" ? "Trucs:" : "Tips:";
 const trucsFormatted = (() => {
   if (!item.trucs) return "";
 
-  // Découper selon les retours à la ligne
-  const lines = item.trucs.split(/\n/).map(l => l.trim()).filter(l => l !== "");
+  const lines = item.trucs
+    .split(/\n/)
+    .map(l => l.trim())
+    .filter(l => l.length > 0);   // élimine TOUTES les lignes vides
 
-  // S'il n'y a qu'une seule ligne → pas de puce
   if (lines.length <= 1) {
     return lines[0] || "";
   }
 
-  // Sinon → liste avec puces
   return lines.map(line => `• ${line}`).join("<br>");
 })();
 
@@ -63,7 +63,7 @@ return `
   </div>
 
   <div class="challenge-tips">
-    <span class="label">${tipsLabel}</span> ${trucsFormatted}
+    <span class="label">${tipsLabel}</span><span class="tips-content"> ${trucsFormatted}</span>
   </div>
 `;
 
