@@ -165,6 +165,19 @@ if (refToggle && refSection) {
     refToggle.classList.toggle("open", !isOpen);
   });
 }
+// Mindset & Objectifs : afficher / masquer
+const mindsetToggle = document.getElementById("mindset-toggle");
+const mindsetSection = document.getElementById("mindset-section");
+
+if (mindsetToggle && mindsetSection) {
+  mindsetToggle.addEventListener("click", () => {
+    const isOpen = mindsetSection.style.display === "block";
+
+    mindsetSection.style.display = isOpen ? "none" : "block";
+
+    mindsetToggle.classList.toggle("open", !isOpen);
+  });
+}
 // Contact : afficher / masquer avec flèche pivotante
 const contactToggle = document.getElementById("contact-toggle");
 const contactSection = document.getElementById("contact-section");
