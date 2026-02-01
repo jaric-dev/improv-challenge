@@ -119,7 +119,14 @@ button:hover {
   margin-top: 0.4rem;
   padding-right: 0.5rem; /* léger retrait visuel */
 }
+.tips-content a {
+  color: #0077cc;
+  text-decoration: none;
+}
 
+.tips-content a:hover {
+  text-decoration: underline;
+}
 
 /* ------------------------------
    TOGGLES (Références + Contact)
@@ -203,6 +210,25 @@ button:hover {
 #references,
 #references * {
   text-align: left;
+}
+/* ------------------------------
+   SECTION MINDSET
+------------------------------ */
+#mindset-section {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #444;
+  padding-left: 0.5rem;
+  border-left: 2px solid #eee;
+  animation: fadeIn 0.25s ease;
+}
+#mindset-section ul {
+  margin: 0.3rem 0 1rem 1rem;
+  padding: 0;
+}
+
+#mindset-section li {
+  margin: 0.3rem 0;
 }
 
 /* ------------------------------
